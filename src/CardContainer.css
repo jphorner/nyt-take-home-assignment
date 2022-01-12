@@ -1,0 +1,10 @@
+.news-cards-container {
+  height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(2, 28rem);
+  grid-gap: 1.2rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 1rem;
+  overflow-y: scroll;
+}

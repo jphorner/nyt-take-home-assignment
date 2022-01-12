@@ -1,0 +1,15 @@
+.App {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0px;
+  background: rgb(32,178,170);
+  background: linear-gradient(150deg, rgba(32,178,170,1) 0%, rgba(9,74,105,1) 83%);
+  height: 100vh;
+}
+
+.site-title,
+.site-slogan {
+  text-align: center;
+  color: white;
+}
