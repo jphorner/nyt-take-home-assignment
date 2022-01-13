@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-const ArticleDetails = () => {
+const ArticleDetails = ({getDetails}) => {
+
   return (
-    <div>Test</div>
+    <div onClick={getDetails}>Test</div>
   )
 }
 

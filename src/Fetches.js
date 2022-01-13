@@ -5,7 +5,8 @@ class Fetches extends Component {
   constructor() {
     super();
     this.state = {
-      articles: []
+      articles: [],
+      category: ''
     }
   }
 
@@ -15,10 +16,10 @@ class Fetches extends Component {
       .then(data => this.setState({ articles: data.results }))
   }
 
-  render() {
+  render(props) {
     return (
       <div>
-        <CardContainer articleList={this.state.articles} />
+        <CardContainer articleList={this.state.articles} getDetails={this.props.getDetails}/>
       </div>
     )
   }

@@ -8,6 +8,16 @@ import './App.css';
 class App extends Component {
   constructor() {
     super();
+    this.state = {
+      articles: [],
+      currentArticle: ''
+    }
+  }
+
+  getArticleDetails = (event) => {
+    console.log(event.target.id)
+    // let selectedArticle = articleList.find( article => article.uri === event.target.id);
+    // console.log('TEST:', selectedArticle)
   }
 
   render() {
@@ -22,7 +32,7 @@ class App extends Component {
           </header>
           <main>
             <Routes>
-              <Route exact path="/" element={<Fetches />}></Route>
+              <Route exact path="/" element={<Fetches getDetails={this.getArticleDetails}/>}></Route>
               <Route exact path="/details" element={<ArticleDetails />}></Route>
             </Routes>
           </main>
@@ -33,6 +43,9 @@ class App extends Component {
 }
 
 export default App;
+
+// MAKE PROJECT BOARD
+// MAKE WIREFRAME
 
 // DETAILS VIEW:
   // Use "render={({ match })} => {(matchFunc)}" to find matching article info from articleList
