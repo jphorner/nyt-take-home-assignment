@@ -6,9 +6,14 @@
 .sections-list {
   justify-content: center;
   height: 20%;
-  width: 65%;
+  width: 60%;
 }
 
 .sections-list > button {
   margin: .2rem .3rem .3rem .3rem;
+  padding: .3rem .3rem .3rem .3rem;
+  border: 0px;
+  background-color: #06555e;
+  color: white;
+  cursor: pointer;
 }

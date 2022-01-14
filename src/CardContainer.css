@@ -1,10 +1,19 @@
+.aligner {
+  display: flex;
+  justify-content: center;
+}
+
 .news-cards-container {
-  height: 80vh;
+  max-height: 75vh;
   display: grid;
   grid-template-columns: repeat(2, 28rem);
   grid-gap: 1.2rem;
   padding-left: 5rem;
   padding-right: 5rem;
   padding-top: 1rem;
+  margin-top: 1rem;
   overflow-y: scroll;
+  border: 1px solid white;
+  background: rgb(123,125,134);
+  background: linear-gradient(126deg, rgba(123,125,134,1) 0%, rgba(38,38,38,1) 84%);
 }

@@ -14,6 +14,7 @@ class App extends Component {
       currentArticle: '',
       articlesSet: false,
       section: '',
+      sectionsDisplayed: true
     }
   }
 
@@ -37,20 +38,25 @@ class App extends Component {
     let articleList = this.state.articles;
     console.log(event.target.id);
     let selectedArticle = articleList.find( article => article.uri === event.target.id);
-    this.setState({ currentArticle: selectedArticle })
+    this.setState({ currentArticle: selectedArticle }, () => {
+      this.toggleSectionView()
+    });
   }
-
-  // setSection = (event) => {
-  //   event.preventDefault();
-  //   console.log(event.target.id)
-  // }
 
   getArticlesBySection = (event) => {
     event.preventDefault();
     this.setState({ section: event.target.id });
     this.setState({ articlesSet: 'false' }, () => {
-      this.getArticleList();
+      this.getArticleList()
     })
+  }
+
+  toggleSectionView = () => {
+    if (!this.state.sectionsDisplayed) {
+      this.setState({ sectionsDisplayed: true });
+    } else {
+      this.setState({ sectionsDisplayed: false });
+    }
   }
 
   render() {
@@ -60,14 +66,13 @@ class App extends Component {
           <header className="App-header">
             <div className="header-text">
               <h1 className="site-title">It's News, Alright!</h1>
-              <h3 className="site-slogan">Top stories at a glance - without all of the clutter.</h3>
             </div>
           </header>
           <main>
-            <Sections setSection={this.getArticlesBySection} />
+            <Sections setSection={this.getArticlesBySection} sectionsDisplayed={this.state.sectionsDisplayed} />
             <Routes>
-              <Route exact path="/" element={<Fetches getDetails={this.getArticleDetails} getStoriesByCategory={this.getArticleList} articleList={this.state.articles} articlesSet={this.state.articlesSet} switchSection={this.getArticlesBySection}/>}></Route>
-              <Route exact path="/details" element={<ArticleDetails article={this.state.currentArticle}/>}></Route>
+              <Route exact path="/" element={<Fetches getDetails={this.getArticleDetails} getStoriesByCategory={this.getArticleList} articleList={this.state.articles} articlesSet={this.state.articlesSet} switchSection={this.getArticlesBySection} toggleSections={this.toggleSectionView} />}></Route>
+              <Route exact path={`/details/${this.state.currentArticle.uri}`} element={<ArticleDetails article={this.state.currentArticle} toggleSections={this.toggleSectionView} />}></Route>
             </Routes>
           </main>
         </div>

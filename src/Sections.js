@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Sections.css';
 
-const Sections = ({setSection}) => {
+const Sections = ({ setSection, sectionsDisplayed }) => {
 
   const sections = [
     'arts', 'automobiles', 'books', 'business',
@@ -13,9 +13,13 @@ const Sections = ({setSection}) => {
   ];
 
   const showSections = sections.map( section => {
-    return (
-      <button className='section-option' id={section} onClick={setSection} key={section}>{section}</button>
-    )
+    if (!sectionsDisplayed) {
+      return;
+    } else {
+      return (
+        <button className='section-option' id={section} onClick={setSection} key={section}>{section}</button>
+      )
+    }
   })
 
   return (

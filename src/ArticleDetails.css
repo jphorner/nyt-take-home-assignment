@@ -1,0 +1,32 @@
+.selected-article-details {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.article-info-container {
+  width: 65%;
+  padding: 2rem;
+  background-color: white;
+}
+
+.article-image-container {
+  display: flex;
+  justify-content: center;
+  background-color: #404242;
+  padding: .5rem 0rem .5rem 0rem;
+  margin-top: .3rem;
+}
+
+.article-image-container > img {
+  max-width: 50%;
+}
+
+.selected-article-link > a {
+  color: #ff9a1e;
+}
+
+.back-link {
+  font-size: 3rem;
+}

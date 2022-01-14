@@ -8,8 +8,8 @@
   height: 100vh;
 }
 
-.site-title,
-.site-slogan {
+.site-title {
   text-align: center;
   color: white;
+  margin: 1rem 0rem 1rem 0rem;
 }

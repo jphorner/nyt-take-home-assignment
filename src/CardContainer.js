@@ -6,13 +6,15 @@ const CardContainer = ({ articleList, getDetails }) => {
 
   const newsCards = articleList.map( article => {
     return (
-      <NewsCard className="news-card" title={article.title} abstract={article.abstract} url={article.url} key={Math.random()} id={article.uri} getDetails={getDetails} articleList={articleList}/>
+      <NewsCard className="news-card" title={article.title} abstract={article.abstract} url={article.url} key={Math.random()} id={article.uri} getDetails={getDetails} articleList={articleList} />
     )
   })
 
   return (
-    <div className="news-cards-container">
-      {newsCards}
+    <div className="aligner">
+      <div className="news-cards-container">
+        {newsCards}
+      </div>
     </div>
   )
 }
