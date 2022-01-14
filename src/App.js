@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route, Link, Outlet } from 'react-router-dom';
+import Sections from './Sections';
 import Fetches from './Fetches';
 import ArticleDetails from './ArticleDetails';
 import logo from './logo.svg';
@@ -11,7 +12,8 @@ class App extends Component {
     this.state = {
       articles: [],
       currentArticle: '',
-      articlesSet: false
+      articlesSet: false,
+      section: '',
     }
   }
 
@@ -23,6 +25,10 @@ class App extends Component {
         .then(data => this.setState({ articles: data.results }))
         .then(() => this.setState({ articlesSet: true }))
     } else {
+      fetch(`https://api.nytimes.com/svc/topstories/v2/${this.state.section}.json?api-key=J8trxGQP5jbdBbCITZcGJspnNAQX3hmH`)
+        .then(response => response.json())
+        .then(data => this.setState({ articles: data.results }))
+        .then(() => this.setState({ articlesSet: true }))
       return;
     }
   }
@@ -32,6 +38,19 @@ class App extends Component {
     console.log(event.target.id);
     let selectedArticle = articleList.find( article => article.uri === event.target.id);
     this.setState({ currentArticle: selectedArticle })
+  }
+
+  // setSection = (event) => {
+  //   event.preventDefault();
+  //   console.log(event.target.id)
+  // }
+
+  getArticlesBySection = (event) => {
+    event.preventDefault();
+    this.setState({ section: event.target.id });
+    this.setState({ articlesSet: 'false' }, () => {
+      this.getArticleList();
+    })
   }
 
   render() {
@@ -45,8 +64,9 @@ class App extends Component {
             </div>
           </header>
           <main>
+            <Sections setSection={this.getArticlesBySection} />
             <Routes>
-              <Route exact path="/" element={<Fetches getDetails={this.getArticleDetails} getStoriesByCategory={this.getArticleList} articleList={this.state.articles} articlesSet={this.state.articlesSet}/>}></Route>
+              <Route exact path="/" element={<Fetches getDetails={this.getArticleDetails} getStoriesByCategory={this.getArticleList} articleList={this.state.articles} articlesSet={this.state.articlesSet} switchSection={this.getArticlesBySection}/>}></Route>
               <Route exact path="/details" element={<ArticleDetails article={this.state.currentArticle}/>}></Route>
             </Routes>
           </main>

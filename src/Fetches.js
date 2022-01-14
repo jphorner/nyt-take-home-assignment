@@ -12,7 +12,7 @@ class Fetches extends Component {
   render(props) {
     return (
       <div>
-        <CardContainer articleList={this.props.articleList} getDetails={this.props.getDetails} />
+        {this.props.articleList && <CardContainer articleList={this.props.articleList} getDetails={this.props.getDetails} />}
       </div>
     )
   }

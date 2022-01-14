@@ -1,0 +1,14 @@
+.sections-container {
+  display: flex;
+  justify-content: center;
+}
+
+.sections-list {
+  justify-content: center;
+  height: 20%;
+  width: 65%;
+}
+
+.sections-list > button {
+  margin: .2rem .3rem .3rem .3rem;
+}
