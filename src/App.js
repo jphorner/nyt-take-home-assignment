@@ -10,14 +10,21 @@ class App extends Component {
     super();
     this.state = {
       articles: [],
-      currentArticle: ''
+      currentArticle: '',
+      articlesSet: false
     }
   }
 
   getArticleList = () => {
-    fetch('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=J8trxGQP5jbdBbCITZcGJspnNAQX3hmH')
-      .then(response => response.json())
-      .then(data => this.setState({ articles: data.results }))
+    if (!this.state.articlesSet) {
+      console.log('ARTICLES FETCHED')
+      fetch('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=J8trxGQP5jbdBbCITZcGJspnNAQX3hmH')
+        .then(response => response.json())
+        .then(data => this.setState({ articles: data.results }))
+        .then(() => this.setState({ articlesSet: true }))
+    } else {
+      return;
+    }
   }
 
   getArticleDetails = (event) => {
@@ -39,7 +46,7 @@ class App extends Component {
           </header>
           <main>
             <Routes>
-              <Route exact path="/" element={<Fetches getDetails={this.getArticleDetails} getStoriesByCategory={this.getArticleList} articleList={this.state.articles} />}></Route>
+              <Route exact path="/" element={<Fetches getDetails={this.getArticleDetails} getStoriesByCategory={this.getArticleList} articleList={this.state.articles} articlesSet={this.state.articlesSet}/>}></Route>
               <Route exact path="/details" element={<ArticleDetails article={this.state.currentArticle}/>}></Route>
             </Routes>
           </main>

@@ -4,7 +4,9 @@ import CardContainer from './CardContainer';
 class Fetches extends Component {
 
   componentDidMount = () => {
-    this.props.getStoriesByCategory();
+    if (!this.props.articlesSet) {
+      this.props.getStoriesByCategory();
+    }
   }
 
   render(props) {

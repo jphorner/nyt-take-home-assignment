@@ -5,7 +5,6 @@ import NewsCard from './NewsCard.js';
 const CardContainer = ({ articleList, getDetails }) => {
 
   const newsCards = articleList.map( article => {
-    console.log(article)
     return (
       <NewsCard className="news-card" title={article.title} abstract={article.abstract} url={article.url} key={Math.random()} id={article.uri} getDetails={getDetails} articleList={articleList}/>
     )
