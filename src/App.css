@@ -6,6 +6,7 @@
   background: rgb(32,178,170);
   background: linear-gradient(150deg, rgba(32,178,170,1) 0%, rgba(9,74,105,1) 83%);
   height: 100vh;
+  font-family: 'Helvetica';
 }
 
 .site-title {

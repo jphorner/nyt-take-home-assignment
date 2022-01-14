@@ -17,3 +17,11 @@
   color: white;
   cursor: pointer;
 }
+
+.sections-list > button:hover {
+  background-color: black;
+}
+
+.sections-list > button:active {
+  background-color: #fc9f00;
+}

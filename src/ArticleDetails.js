@@ -16,8 +16,12 @@ const ArticleDetails = ({ article, toggleSections }) => {
         <h2 className="selected-article-title">{article.title}</h2>
         <h3 className="selected-article-abstract">{article.abstract}</h3>
         <div className="selected-article-author">{article.byline}</div>
-        <h4 className="selected-article-link"><a href={article.url}>View Original Article</a></h4>
-        <Link className="back-link" to="/" onClick={toggleSections}>🔙</Link>
+        <div className="interactive-elements-container">
+          <div className="interactive-elements-aligner">
+            <h4 className="selected-article-link"><a href={article.url}>View Original Article</a></h4>
+            <Link className="back-link" to="/" onClick={toggleSections}>🔙</Link>
+          </div>
+        </div>
       </div>
     </article>
   )
