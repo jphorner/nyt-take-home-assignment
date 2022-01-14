@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 
-const ArticleDetails = ({getDetails}) => {
+const ArticleDetails = ({ article }) => {
+
+  const testArticle = () => {
+    console.log(article)
+  }
 
   return (
-    <div onClick={getDetails}>Test</div>
+    <article className="selected-article-details" onClick={testArticle}>
+      <div className="selected-article-title">{article.title}</div>
+    </article>
   )
 }
 

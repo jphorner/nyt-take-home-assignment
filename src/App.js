@@ -14,10 +14,17 @@ class App extends Component {
     }
   }
 
+  getArticleList = () => {
+    fetch('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=J8trxGQP5jbdBbCITZcGJspnNAQX3hmH')
+      .then(response => response.json())
+      .then(data => this.setState({ articles: data.results }))
+  }
+
   getArticleDetails = (event) => {
-    console.log(event.target.id)
-    // let selectedArticle = articleList.find( article => article.uri === event.target.id);
-    // console.log('TEST:', selectedArticle)
+    let articleList = this.state.articles;
+    console.log(event.target.id);
+    let selectedArticle = articleList.find( article => article.uri === event.target.id);
+    this.setState({ currentArticle: selectedArticle })
   }
 
   render() {
@@ -32,8 +39,8 @@ class App extends Component {
           </header>
           <main>
             <Routes>
-              <Route exact path="/" element={<Fetches getDetails={this.getArticleDetails}/>}></Route>
-              <Route exact path="/details" element={<ArticleDetails />}></Route>
+              <Route exact path="/" element={<Fetches getDetails={this.getArticleDetails} getStoriesByCategory={this.getArticleList} articleList={this.state.articles} />}></Route>
+              <Route exact path="/details" element={<ArticleDetails article={this.state.currentArticle}/>}></Route>
             </Routes>
           </main>
         </div>
