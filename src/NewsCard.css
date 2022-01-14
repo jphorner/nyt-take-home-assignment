@@ -8,6 +8,10 @@
   padding: .5rem .5rem .5rem .5rem;
 }
 
+.article-container:hover {
+  background-color: #fffce8;
+}
+
 .news-card {
   display: flex;
   flex-direction: column;

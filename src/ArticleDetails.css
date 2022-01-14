@@ -1,0 +1,47 @@
+.selected-article-details {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.article-info-container {
+  width: 65%;
+  padding: 2rem;
+  background-color: white;
+}
+
+.selected-article-section {
+  color: #00aaba;
+}
+
+.article-image-container {
+  display: flex;
+  justify-content: center;
+  background-color: #2d2d2d;
+  padding: .5rem 0rem .5rem 0rem;
+  margin-top: .3rem;
+}
+
+.article-image-container > img {
+  max-width: 60%;
+}
+
+.interactive-elements-aligner {
+  display: flex;
+  flex-direction: column;
+}
+
+.interactive-elements-container {
+  display: flex;
+  justify-content: center;
+}
+
+.selected-article-link > a {
+  color: #ff9a1e;
+}
+
+.back-link {
+  align-self: center;
+  font-size: 3rem;
+}
